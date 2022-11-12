@@ -1,7 +1,7 @@
 package com.drones.service;
 
+import com.drones.enums.State;
 import com.drones.model.Drone;
-import com.drones.model.Medication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -16,22 +16,19 @@ public class DroneServiceImpl implements DroneService{
     }
 
     @Override
-    public void loadMedication(String serialNumber, @RequestBody List<@Valid Medication> medicationList) {
-
-    }
-
-    @Override
-    public List<Medication> listMedication(String serialNumber) {
+    public Drone get(String serialNumber) {
         return null;
     }
 
     @Override
-    public Double getBattery(String serialNumber) {
+    public Drone listMedication(String serialNumber) {
         return null;
     }
 
     @Override
-    public List<Drone> getAvailableDrone() {
+    public List<Drone> getDroneByState(State state) {
         return null;
     }
+
+
 }

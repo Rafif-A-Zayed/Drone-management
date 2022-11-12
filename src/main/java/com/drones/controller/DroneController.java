@@ -35,12 +35,12 @@ public class DroneController {
     }
     @GetMapping(value = "/{serialNumber}/medication")
     public @ResponseBody List<Medication> getMedication(@PathVariable String serialNumber) {
-       return listMedicationService.execute(serialNumber);
+       return listMedicationService.execute(Request.builder().serialNumber(serialNumber).build());
     }
 
     @GetMapping(value = "/{serialNumber}/battery")
     public @ResponseBody Double getBatteryLevel(@PathVariable String serialNumber) {
-        return getBatteryLevelService.execute(serialNumber);
+        return getBatteryLevelService.execute(Request.builder().serialNumber(serialNumber).build());
     }
 
     @GetMapping(value = "/available")
