@@ -15,7 +15,7 @@ public class DroneExceptionHandler {
         return new ResponseEntity<>( exp.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler({InvalidStateException.class, MissingMandatoryException.class})
+    @ExceptionHandler({InvalidInputException.class, MissingMandatoryException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ResponseEntity<String> invalidInput(RuntimeException exp) {
         return new ResponseEntity<>(exp.getMessage(), HttpStatus.BAD_REQUEST);
