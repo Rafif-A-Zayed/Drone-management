@@ -24,7 +24,7 @@ public class ListMedicationService extends BusinessService<Request,List<Medicati
         }
         // check drone status
         if(State.LOADED.compareTo(drone.getState()) != 0){
-            throw new InvalidStateException(MessageFormat.format(AppConstant.NOT_FOUND_MSG,drone.getState()) );
+            throw new InvalidStateException(MessageFormat.format(AppConstant.INVALID_STATE_MSG,drone.getState()) );
         }
         request.setDrone(drone);
     }

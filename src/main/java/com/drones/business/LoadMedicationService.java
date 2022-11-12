@@ -31,7 +31,7 @@ public class LoadMedicationService extends BusinessService<LoadMedicationRequest
         }
         // check drone state only idle drone can be loaded by medication
         if(State.IDLE.compareTo(drone.getState()) != 0){
-            throw new InvalidStateException(MessageFormat.format(AppConstant.NOT_FOUND_MSG,drone.getState()) );
+            throw new InvalidStateException(MessageFormat.format(AppConstant.INVALID_STATE_MSG,drone.getState()) );
         }
         request.setDrone(drone);
 

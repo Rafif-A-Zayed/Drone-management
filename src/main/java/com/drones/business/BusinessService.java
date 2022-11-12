@@ -7,14 +7,12 @@ public abstract class BusinessService <Req,Res>{
 
         validateRequest(request);
 
-        Res response = serviceLogic(request);
+        return serviceLogic(request);
 
-        return response;
     }
 
     void validateRequest(Req request){
-
-     };
+     }
     abstract Res serviceLogic(Req request);
 
 }
