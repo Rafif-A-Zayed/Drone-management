@@ -1,5 +1,6 @@
 package com.drones.business;
 
+import com.drones.business.request.Request;
 import com.drones.enums.State;
 import com.drones.exception.InvalidInputException;
 import com.drones.exception.NotFoundException;
@@ -24,7 +25,8 @@ public class ListMedicationService extends BusinessService<Request,List<Medicati
         }
         // check drone status
         if(State.LOADED.compareTo(drone.getState()) != 0){
-            throw new InvalidInputException(MessageFormat.format(AppConstant.INVALID_STATE_MSG,drone.getState()) );
+            throw new InvalidInputException(MessageFormat.format(AppConstant.INVALID_STATE_MSG,drone.getState()
+                    , AppConstant.LIST_MEDICATION_ACTION) );
         }
         request.setDrone(drone);
     }

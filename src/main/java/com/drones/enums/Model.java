@@ -8,9 +8,13 @@ public enum Model {
     Heavyweight;
 
 
-    public static Model getEnum(String value) {
+    public static Model getEnumByValue(String value) {
 
-       return Model.valueOf(value);
+        for(Model model:Model.values()){
+            if(model.name().equals(value))
+                return model;
+        }
+        return null;
 
     }
 

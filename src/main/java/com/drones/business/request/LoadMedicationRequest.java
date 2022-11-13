@@ -1,4 +1,4 @@
-package com.drones.business;
+package com.drones.business.request;
 
 
 import com.drones.model.Medication;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @SuperBuilder()
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LoadMedicationRequest extends Request{
+public class LoadMedicationRequest extends Request {
     List<Medication> medicationList;
 
 }

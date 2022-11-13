@@ -1,5 +1,6 @@
 package com.drones.business;
 
+import com.drones.business.request.LoadMedicationRequest;
 import com.drones.enums.State;
 import com.drones.exception.InvalidInputException;
 import com.drones.exception.MissingMandatoryException;
@@ -35,7 +36,7 @@ public class LoadMedicationService extends BusinessService<LoadMedicationRequest
 
         // check drone state only idle drone can be loaded by medication
         if (State.IDLE.compareTo(drone.getState()) != 0) {
-            throw new InvalidInputException(MessageFormat.format(AppConstant.INVALID_STATE_MSG, drone.getState()));
+            throw new InvalidInputException(MessageFormat.format(AppConstant.INVALID_STATE_MSG, drone.getState(), AppConstant.LOAD_MEDICATION_ACTION));
         }
 
         // check drone battery status
@@ -49,14 +50,15 @@ public class LoadMedicationService extends BusinessService<LoadMedicationRequest
             throw new InvalidInputException(MessageFormat.format(AppConstant.INVALID_WIGHT_MSG, sum, drone.getWight()));
         }
 
-        drone.setState(State.LOADING);
-        droneService.save(drone);
+       // drone.setState(State.LOADING);
+       // droneService.save(drone);
         request.setDrone(drone);
     }
 
     @Override
     Void serviceLogic(LoadMedicationRequest request) {
-
+        request.getDrone().setState(State.LOADING);
+        droneService.save(request.getDrone());
         // add drone medication
         request.getDrone().setMedications(request.getMedicationList());
         // update status

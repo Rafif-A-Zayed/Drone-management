@@ -1,6 +1,8 @@
 package com.drones.controller;
 
 import com.drones.business.*;
+import com.drones.business.request.LoadMedicationRequest;
+import com.drones.business.request.Request;
 import com.drones.model.Drone;
 import com.drones.model.Medication;
 import com.drones.util.AppConstant;
@@ -28,6 +30,9 @@ public class DroneController {
     @Autowired
     GetAvailableDronesService getAvailableDronesService;
 
+    @Autowired
+    GetDroneService getDroneService;
+
     @PostMapping()
     public  Response<Void> register(@RequestBody @Valid Drone drone) {
         return Response.<Void>builder().message(AppConstant.SUCCESS_MSG)
@@ -40,6 +45,13 @@ public class DroneController {
         return Response.<Void>builder().message(AppConstant.SUCCESS_MSG)
                 .status(AppConstant.SUCCESS_CODE)
                 .body(loadMedicationService.execute(LoadMedicationRequest.builder().serialNumber(serialNumber).medicationList(medicationList).build())).build();
+    }
+
+    @GetMapping(value = "/{serialNumber}")
+    public Response<Drone> getDrone(@PathVariable String serialNumber) {
+        return Response.<Drone>builder().message(AppConstant.SUCCESS_MSG)
+                .status(AppConstant.SUCCESS_CODE)
+                .body(getDroneService.execute(serialNumber)).build();
     }
     @GetMapping(value = "/{serialNumber}/medication")
     public @ResponseBody Response<List<Medication>> getMedication(@PathVariable String serialNumber) {

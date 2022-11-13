@@ -1,4 +1,4 @@
-package com.drones.business;
+package com.drones.business.request;
 
 import com.drones.model.Drone;
 import lombok.AccessLevel;
