@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.text.MessageFormat;
 
 @Component
-public class LoadMedicationService extends BusinessService<LoadMedicationRequest, String> {
+public class LoadMedicationService extends BusinessService<LoadMedicationRequest, Void> {
 
     @Autowired
     DroneService droneService;
@@ -55,7 +55,7 @@ public class LoadMedicationService extends BusinessService<LoadMedicationRequest
     }
 
     @Override
-    String serviceLogic(LoadMedicationRequest request) {
+    Void serviceLogic(LoadMedicationRequest request) {
 
         // add drone medication
         request.getDrone().setMedications(request.getMedicationList());
@@ -63,6 +63,6 @@ public class LoadMedicationService extends BusinessService<LoadMedicationRequest
         request.getDrone().setState(State.LOADED);
         // update drone status
         droneService.save(request.getDrone());
-        return "";
+      return null;
     }
 }

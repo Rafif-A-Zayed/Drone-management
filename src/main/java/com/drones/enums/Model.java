@@ -6,4 +6,13 @@ public enum Model {
     Middleweight,
     Cruiserweight,
     Heavyweight;
+
+
+    public static Model getEnum(String value) {
+
+       return Model.valueOf(value);
+
+    }
+
+
 }

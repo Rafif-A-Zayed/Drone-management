@@ -3,14 +3,18 @@ package com.drones.controller;
 import com.drones.business.*;
 import com.drones.model.Drone;
 import com.drones.model.Medication;
+import com.drones.util.AppConstant;
+import com.drones.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/drone")
 public class DroneController {
+
 
     @Autowired
     RegisterDroneService registerDrone;
@@ -25,26 +29,37 @@ public class DroneController {
     GetAvailableDronesService getAvailableDronesService;
 
     @PostMapping()
-    public void register(@RequestBody Drone drone) {
-        registerDrone.execute(drone);
+    public  Response<Void> register(@RequestBody @Valid Drone drone) {
+        return Response.<Void>builder().message(AppConstant.SUCCESS_MSG)
+                .status(AppConstant.SUCCESS_CODE)
+                .body( registerDrone.execute(drone)).build();
     }
-    @PostMapping(value = "/{serialNumber}")
-    public void loadMedication(@PathVariable String serialNumber,
-                               @RequestBody List<Medication> medicationList) {
-        loadMedicationService.execute(LoadMedicationRequest.builder().serialNumber(serialNumber).medicationList(medicationList).build());
+    @PutMapping(value = "/{serialNumber}")
+    public Response<Void> loadMedication(@PathVariable String serialNumber,
+                               @RequestBody List<@Valid Medication> medicationList) {
+        return Response.<Void>builder().message(AppConstant.SUCCESS_MSG)
+                .status(AppConstant.SUCCESS_CODE)
+                .body(loadMedicationService.execute(LoadMedicationRequest.builder().serialNumber(serialNumber).medicationList(medicationList).build())).build();
     }
     @GetMapping(value = "/{serialNumber}/medication")
-    public @ResponseBody List<Medication> getMedication(@PathVariable String serialNumber) {
-       return listMedicationService.execute(Request.builder().serialNumber(serialNumber).build());
+    public @ResponseBody Response<List<Medication>> getMedication(@PathVariable String serialNumber) {
+        return Response.<List<Medication>>builder().message(AppConstant.SUCCESS_MSG)
+                .status(AppConstant.SUCCESS_CODE)
+                .body(listMedicationService.execute(Request.builder().serialNumber(serialNumber).build()) ).build();
+
     }
 
     @GetMapping(value = "/{serialNumber}/battery")
-    public @ResponseBody Double getBatteryLevel(@PathVariable String serialNumber) {
-        return getBatteryLevelService.execute(Request.builder().serialNumber(serialNumber).build());
+    public @ResponseBody Response<Double> getBatteryLevel(@PathVariable String serialNumber) {
+        return Response.<Double>builder().message(AppConstant.SUCCESS_MSG)
+                .status(AppConstant.SUCCESS_CODE)
+                .body( getBatteryLevelService.execute(Request.builder().serialNumber(serialNumber).build())).build();
     }
 
     @GetMapping(value = "/available")
-    public @ResponseBody List<Drone> getAvailableDrone() {
-        return getAvailableDronesService.execute(null);
+    public @ResponseBody Response<List<Drone> >  getAvailableDrone() {
+        return Response.<List<Drone> >builder().message(AppConstant.SUCCESS_MSG)
+                .status(AppConstant.SUCCESS_CODE)
+                .body( getAvailableDronesService.execute(null)).build();
     }
 }

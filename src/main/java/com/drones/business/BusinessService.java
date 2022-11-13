@@ -1,6 +1,6 @@
 package com.drones.business;
 
-public abstract class BusinessService <Req,Res>{
+public abstract class BusinessService <Req,Res >{
 
 
     public Res execute(Req request){
