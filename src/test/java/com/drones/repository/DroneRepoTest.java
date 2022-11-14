@@ -23,6 +23,7 @@ public class DroneRepoTest {
 
     @Test
     void isDroneExitsById() {
+        droneRepository.deleteAll();
         Drone drone = Drone.builder().state(State.IDLE).capacity(100.0)
                 .wight(300.0).model(Model.Heavyweight).serialNumber("SER-1").build();
         droneRepository.save(drone);
@@ -32,6 +33,7 @@ public class DroneRepoTest {
 
     @Test
     void getByState() {
+        droneRepository.deleteAll();
         List<Drone> droneList = new ArrayList<>(3);
         Drone drone1 = Drone.builder().state(State.IDLE).capacity(100.0)
                 .wight(300.0).model(Model.Heavyweight).serialNumber("SER-1").build();
@@ -45,6 +47,24 @@ public class DroneRepoTest {
         droneRepository.saveAll(droneList);
         List <Drone> droneStateList = droneRepository.getDroneByState(State.LOADING);
         assertThat(droneStateList.get(0).getState().compareTo(State.LOADING) == 0).isTrue();
+    }
+
+    @Test
+    void findByCapacityLessThan() {
+        droneRepository.deleteAll();
+        List<Drone> droneList = new ArrayList<>(3);
+        Drone drone1 = Drone.builder().state(State.IDLE).capacity(20.0)
+                .wight(300.0).model(Model.Heavyweight).serialNumber("SER-1").build();
+        droneList.add(drone1);
+        Drone drone2 = Drone.builder().state(State.IDLE).capacity(11.0)
+                .wight(300.0).model(Model.Heavyweight).serialNumber("SER-2").build();
+        droneList.add(drone2);
+        Drone drone3 = Drone.builder().state(State.LOADING).capacity(100.0)
+                .wight(300.0).model(Model.Heavyweight).serialNumber("SER-3").build();
+        droneList.add(drone3);
+        droneRepository.saveAll(droneList);
+        List <Drone> droneStateList = droneRepository.findByCapacityLessThan(30.0);
+        assertThat(droneStateList.size() == 2).isTrue();
     }
 
 }

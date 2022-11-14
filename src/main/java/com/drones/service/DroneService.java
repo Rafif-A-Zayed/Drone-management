@@ -14,4 +14,6 @@ public interface DroneService {
      Drone getWithMedication(String serialNumber);
      List<Drone> getDroneByState(State state);
 
+     List<Drone> getDroneBatteryLess(Double threshold);
+
 }

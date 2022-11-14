@@ -59,4 +59,11 @@ public class DroneServiceTest {
 
     }
 
+    @Test
+    void getDroneBatteryLess() {
+        droneService.getDroneBatteryLess(30.0);
+        verify(droneRepository).findByCapacityLessThan(30.0);
+
+    }
+
 }

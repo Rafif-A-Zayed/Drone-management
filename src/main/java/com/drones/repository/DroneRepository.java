@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface DroneRepository extends CrudRepository<Drone,String> {
 
-
-
     List<Drone> getDroneByState(State state);
+
+    List<Drone> findByCapacityLessThan(Double capacity);
 }

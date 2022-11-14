@@ -44,5 +44,10 @@ public class DroneServiceImpl implements DroneService {
         return droneRepository.getDroneByState(state);
     }
 
+    @Override
+    public List<Drone> getDroneBatteryLess(Double threshold) {
+        return droneRepository.findByCapacityLessThan(threshold);
+    }
+
 
 }
