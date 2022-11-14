@@ -9,23 +9,34 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DroneServiceImpl implements DroneService{
+public class DroneServiceImpl implements DroneService {
+
+
+    private final DroneRepository droneRepository;
 
     @Autowired
-    DroneRepository droneRepository;
+    DroneServiceImpl(DroneRepository droneRepository) {
+        this.droneRepository = droneRepository;
+    }
+
     @Override
     public void save(Drone drone) {
         droneRepository.save(drone);
     }
 
     @Override
-    public Drone get(String serialNumber) {
-        return droneRepository.getDroneBySerialNumber(serialNumber);
+    public void saveAll(List<Drone> drone) {
+        droneRepository.saveAll(drone);
     }
 
     @Override
-    public Drone listMedication(String serialNumber) {
-        return droneRepository.getDroneBySerialNumber(serialNumber);
+    public Drone get(String serialNumber) {
+        return droneRepository.findById(serialNumber).orElse(null);
+    }
+
+    @Override
+    public Drone getWithMedication(String serialNumber) {
+        return droneRepository.findById(serialNumber).orElse(null);
     }
 
     @Override

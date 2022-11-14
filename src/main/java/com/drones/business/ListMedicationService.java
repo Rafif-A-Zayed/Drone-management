@@ -19,7 +19,7 @@ public class ListMedicationService extends BusinessService<Request,List<Medicati
     @Autowired
     DroneService droneService;
     void validateRequest(Request request){
-        Drone drone = droneService.listMedication(request.getSerialNumber());
+        Drone drone = droneService.getWithMedication(request.getSerialNumber());
         if(drone == null){
             throw new NotFoundException(MessageFormat.format(AppConstant.NOT_FOUND_MSG,request.getSerialNumber()) );
         }

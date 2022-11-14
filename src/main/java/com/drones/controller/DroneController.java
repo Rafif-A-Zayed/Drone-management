@@ -69,7 +69,7 @@ public class DroneController {
     }
 
     @GetMapping(value = "/available")
-    public @ResponseBody Response<List<Drone> >  getAvailableDrone() {
+    public @ResponseBody Response<List<Drone> > getAvailableDrone() {
         return Response.<List<Drone> >builder().message(AppConstant.SUCCESS_MSG)
                 .status(AppConstant.SUCCESS_CODE)
                 .body( getAvailableDronesService.execute(null)).build();

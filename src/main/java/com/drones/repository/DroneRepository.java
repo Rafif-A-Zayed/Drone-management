@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface DroneRepository extends CrudRepository<Drone,String> {
 
-    Drone getDroneBySerialNumber(String serialNumber);
+
 
     List<Drone> getDroneByState(State state);
 }

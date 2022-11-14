@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: drone-management
+  server:
+port: 9090
+logging:
+  level:
+    org.zalando.logbook: TRACE
