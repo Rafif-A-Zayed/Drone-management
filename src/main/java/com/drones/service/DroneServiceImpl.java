@@ -20,8 +20,8 @@ public class DroneServiceImpl implements DroneService {
     }
 
     @Override
-    public void save(Drone drone) {
-        droneRepository.save(drone);
+    public Drone save(Drone drone) {
+        return droneRepository.save(drone);
     }
 
     @Override

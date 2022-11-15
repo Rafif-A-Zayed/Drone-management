@@ -4,12 +4,11 @@ public class AppConstant {
 
     private AppConstant(){}
 
-    public static final int SUCCESS_CODE = 0;
 
     public static final String LOAD_MEDICATION_ACTION = "Load Medication";
     public static final String LIST_MEDICATION_ACTION = "List Medications";
     public static final String UPDATE_DRONE_ACTION = "Update Drone";
-    public static final String SUCCESS_MSG = "Success";
+
     public static final String NOT_FOUND_MSG = "{0} not found";
     public static final String INVALID_STATE_MSG = "{0} invalid state for that {1}";
 

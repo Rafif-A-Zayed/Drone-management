@@ -23,7 +23,7 @@ public class BatteryAuditJob {
     // assumption battery threshold to consider it has problem 30%
     // assumption data return will not be huge data so
     // assumption run daily at 12:00 AM
-    @Scheduled(cron = "0 0 * * *")
+    @Scheduled(cron = "0 0 * * * *")
     public void run() {
        log.info("{} job start ......", BatteryAuditJob.class.getSimpleName());
        List<Drone> droneList = droneService.getDroneBatteryLess(BATTERY_THRESHOLD);
