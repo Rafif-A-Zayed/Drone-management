@@ -23,11 +23,7 @@ The REST API to the example app is described below.
     Connection: close
     Content-Type: application/json
     Content-Length: 2
-
-    {
-      "status": 0,
-      "message": "Success",
-      "body": [
+     [
           {
               "serialNumber": "serial-1",
               "state": "IDLE",
@@ -37,7 +33,7 @@ The REST API to the example app is described below.
               "medications": []
           }
       ]
-   }
+   
     
 
 ### Get a specific Drone
@@ -82,11 +78,7 @@ The REST API to the example app is described below.
     Connection: close
     Content-Type: application/json
     Content-Length: 2
-
- {
-    "status": 0,
-    "message": "Success",
-    "body": [
+    [
         {
             "code": "MED-CODE-4-0",
             "name": "MED-NAME-4=0",
@@ -94,7 +86,6 @@ The REST API to the example app is described below.
             "image": null
         }
     ]
- }
     
 ### Get a specific Drone capacity
 #### Request
@@ -111,12 +102,7 @@ The REST API to the example app is described below.
     Connection: close
     Content-Type: application/json
     Content-Length: 2
-
-   {
-      "status": 0,
-      "message": "Success",
-      "body": 100
-   }
+    100
     
 
 ### Create a new Drone
@@ -136,19 +122,41 @@ The REST API to the example app is described below.
     Content-Type: application/json
     Location: /thing/1
     Content-Length: 36
-
     {
-      "status": 0,
-      "message": "Success",
-      "body": {
-          "serialNumber": "serial-11",
-          "state": "IDLE",
-          "model": "Lightweight",
-          "wight": 300,
-          "capacity": 50,
-          "medications": null
+      "serialNumber": "serial-11",
+      "state": "IDLE",
+      "model": "Lightweight",
+      "wight": 300,
+      "capacity": 50,
+      "medications": null
       }
-  }
+### Load Drone medication
+
+### Request
+
+`PUT /drone/{serialNumber}`
+
+    curl -i -H 'Accept: application/json' -d '[]' http://localhost:8080/drone/{serialNumber}
+
+### Response
+
+    HTTP/1.1 201 Created
+    Date: Thu, 24 Feb 2011 12:36:30 GMT
+    Status: 201 Created
+    Connection: close
+    Content-Type: application/json
+    Location: /thing/1
+    Content-Length: 36
+    {
+      "serialNumber": "serial-11",
+      "state": "IDLE",
+      "model": "Lightweight",
+      "wight": 300,
+      "capacity": 50,
+      "medications": null
+      }
+  
+  
 
 
 
