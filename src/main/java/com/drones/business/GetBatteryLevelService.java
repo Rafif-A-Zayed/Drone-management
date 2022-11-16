@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.text.MessageFormat;
 
 @Component
-public class GetBatteryLevelService extends BusinessService<Request, Double> {
+public class GetBatteryLevelService extends BusinessServiceImpl<Request, Double> {
     @Autowired
     DroneService droneService;
     void validateRequest(Request request){
@@ -22,7 +22,7 @@ public class GetBatteryLevelService extends BusinessService<Request, Double> {
         request.setDrone(drone);
     }
     @Override
-    Double serviceLogic(Request request) {
+    public Double serviceLogic(Request request) {
         return request.getDrone().getCapacity();
     }
 }

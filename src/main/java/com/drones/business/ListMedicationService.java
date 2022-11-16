@@ -16,7 +16,7 @@ import java.text.MessageFormat;
 import java.util.Set;
 
 @Component
-public class ListMedicationService extends BusinessService<Request,Set<Medication>> {
+public class ListMedicationService extends BusinessServiceImpl<Request,Set<Medication>> {
     @Autowired
     DroneService droneService;
     void validateRequest(Request request){
@@ -32,7 +32,7 @@ public class ListMedicationService extends BusinessService<Request,Set<Medicatio
         request.setDrone(drone);
     }
     @Override
-    Set<Medication> serviceLogic(Request request) {
+    public Set<Medication> serviceLogic(Request request) {
 
         return request.getDrone().getMedications();
     }

@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 import java.text.MessageFormat;
 
 @Service
-public class GetDroneService  extends BusinessService<String, Drone> {
+public class GetDroneService  extends BusinessServiceImpl<String, Drone> {
 
     @Autowired
     DroneService droneService;
     @Override
-    Drone serviceLogic(String request) {
+    public Drone serviceLogic(String request) {
         Drone drone =  droneService.get(request);
         if(drone == null){
             throw new NotFoundException(MessageFormat.format(AppConstant.NOT_FOUND_MSG,request) );

@@ -1,18 +1,11 @@
 package com.drones.business;
 
-public abstract class BusinessService <Req,Res >{
+import org.springframework.transaction.annotation.Transactional;
 
+public interface BusinessService  <Req,Res > {
+    @Transactional
+    Res execute(Req request);
 
-    public Res execute(Req request){
-
-        validateRequest(request);
-
-        return serviceLogic(request);
-
-    }
-
-    void validateRequest(Req request){
-     }
-    abstract Res serviceLogic(Req request);
+    Res serviceLogic(Req request);
 
 }

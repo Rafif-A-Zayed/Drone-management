@@ -48,7 +48,7 @@ public class Drone {
     @Audited
     Double capacity;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_drone")
     Set<Medication> medications;
 }

@@ -12,9 +12,13 @@
   - run daily at 12:00 AM
   - publish event with drones data, and it should be handled by another service (Ex. notification service) to send alert via (Ex. email)
 - Audit table added for Drone ( capacity , state ) changes c, it can be used for history changes and reports 
-# Installation
 
+Run 
+- Clone this repository
+- Make sure you have JDK, gradle 
+- 
 - DB consol http://localhost:8080/h2-console 
+- Swagger http://localhost:8080/swagger-ui/index.html
 
 # Requirement 
 - Gradle

@@ -17,7 +17,7 @@ import java.text.MessageFormat;
 
 
 @Component
-public class RegisterDroneService extends BusinessService<Drone, Drone> {
+public class RegisterDroneService extends BusinessServiceImpl<Drone, Drone> {
     @Autowired
     DroneService droneService;
 
@@ -49,7 +49,7 @@ public class RegisterDroneService extends BusinessService<Drone, Drone> {
 
 
     @Override
-    Drone serviceLogic(Drone request) {
+    public Drone serviceLogic(Drone request) {
         request.setState(State.IDLE);
         request = droneService.save(request);
         count++;

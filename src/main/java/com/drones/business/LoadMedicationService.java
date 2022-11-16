@@ -12,10 +12,11 @@ import com.drones.util.AppConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
 import java.text.MessageFormat;
 
 @Component
-public class LoadMedicationService extends BusinessService<LoadMedicationRequest, Void> {
+public class LoadMedicationService extends BusinessServiceImpl<LoadMedicationRequest, Void> {
 
     @Autowired
     DroneService droneService;
@@ -56,7 +57,8 @@ public class LoadMedicationService extends BusinessService<LoadMedicationRequest
     }
 
     @Override
-    Void serviceLogic(LoadMedicationRequest request) {
+
+    public Void serviceLogic(LoadMedicationRequest request) {
         request.getDrone().setState(State.LOADING);
         droneService.save(request.getDrone());
         // add drone medication

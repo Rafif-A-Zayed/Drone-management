@@ -26,9 +26,9 @@ public class AppStartupRunner implements ApplicationRunner {
     public static int MAX_MEDICATION_WEIGHT = 100;
     public static String SERIAL_NUMBER_PATTERN = "serial-{0}";
 
-    public static String MEDICATION_CODE_PATTERN = "MED-CODE-{0}-{1}";
+    public static String MEDICATION_CODE_PATTERN = "MED_CODE_{0}_{1}";
 
-    public static String MEDICATION_NAME_PATTERN = "MED-NAME-{0}={1}";
+    public static String MEDICATION_NAME_PATTERN = "MED-NAME-{0}-{1}";
 
     Model[] models = Model.values();
     public static int MAX_MODEL = 4;
