@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,6 +16,6 @@ import java.util.List;
 @SuperBuilder()
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LoadMedicationRequest extends Request {
-    List<Medication> medicationList;
+    Set<Medication> medicationList;
 
 }

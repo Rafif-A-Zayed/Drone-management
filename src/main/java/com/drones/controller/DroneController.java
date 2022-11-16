@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/drone")
@@ -37,7 +38,7 @@ public class DroneController {
     }
     @PutMapping(value = "/{serialNumber}")
     public Void loadMedication(@PathVariable String serialNumber,
-                               @RequestBody List<@Valid Medication> medicationList) {
+                               @RequestBody Set<@Valid Medication> medicationList) {
         return loadMedicationService.execute(LoadMedicationRequest.builder().serialNumber(serialNumber).medicationList(medicationList).build());
     }
 
@@ -46,7 +47,7 @@ public class DroneController {
         return getDroneService.execute(serialNumber);
     }
     @GetMapping(value = "/{serialNumber}/medication")
-    public @ResponseBody List<Medication> getMedication(@PathVariable String serialNumber) {
+    public @ResponseBody Set<Medication> getMedication(@PathVariable String serialNumber) {
         return listMedicationService.execute(Request.builder().serialNumber(serialNumber).build());
 
     }

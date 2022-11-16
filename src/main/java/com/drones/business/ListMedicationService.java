@@ -12,10 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
-import java.util.List;
+
+import java.util.Set;
 
 @Component
-public class ListMedicationService extends BusinessService<Request,List<Medication>> {
+public class ListMedicationService extends BusinessService<Request,Set<Medication>> {
     @Autowired
     DroneService droneService;
     void validateRequest(Request request){
@@ -31,7 +32,7 @@ public class ListMedicationService extends BusinessService<Request,List<Medicati
         request.setDrone(drone);
     }
     @Override
-    List<Medication> serviceLogic(Request request) {
+    Set<Medication> serviceLogic(Request request) {
 
         return request.getDrone().getMedications();
     }

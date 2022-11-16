@@ -8,7 +8,7 @@ import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -48,6 +48,6 @@ public class Drone {
     @Audited
     Double capacity;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Medication> medications;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Set<Medication> medications;
 }

@@ -12,9 +12,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Component
 @Slf4j
@@ -39,9 +37,9 @@ public class AppStartupRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         log.info("#######  APP startup logic #######");
         Random random = new Random();
-        List<Drone> droneList = new ArrayList<>(10);
+        List<Drone> droneList = new ArrayList<>(5);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 5; i++) {
             Drone drone = getDrone(i, random);
             if (i % 4 == 0) {
                 // add medication for that drone
@@ -66,9 +64,9 @@ public class AppStartupRunner implements ApplicationRunner {
 
     }
 
-    private List<Medication> getMedicationList(int i, double droneWight, Random random) {
+    private Set<Medication> getMedicationList(int i, double droneWight, Random random) {
 
-        List<Medication> medications = new ArrayList<>(3);
+        Set<Medication> medications = new HashSet<>(3);
 
         double sum = 0.0;
         for (int j = 0; j < 3; j++) {

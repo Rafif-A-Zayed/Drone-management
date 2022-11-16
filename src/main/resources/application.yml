@@ -1,8 +1,17 @@
 spring:
   application:
-    name: drone-management
-  server:
-port: 9090
+    name: musala
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    url: jdbc:h2:mem:mydb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+
 logging:
   level:
     org.zalando.logbook: TRACE

@@ -17,14 +17,12 @@ public class DroneExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
-
     public ResponseEntity<ErrorResponse> resourceNotFoundException(NotFoundException exp) {
         return new ResponseEntity<>(ErrorResponse.builder().status(HttpStatus.NOT_FOUND.value()).error(exp.getMessage()).build(),
                 HttpStatus.NOT_FOUND);
 
 
     }
-
 
     @ExceptionHandler({InvalidInputException.class, MissingMandatoryException.class, MethodArgumentNotValidException.class,IllegalStateException.class})
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
@@ -33,6 +31,12 @@ public class DroneExceptionHandler {
                 HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(InvalidOperationException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<ErrorResponse>handleInvalidOperationException(InvalidOperationException exp) { //
+        return new ResponseEntity<>( ErrorResponse.builder().status(HttpStatus.FORBIDDEN.value()).error(exp.getMessage()).build(),
+                HttpStatus.FORBIDDEN);
+    }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -40,6 +44,7 @@ public class DroneExceptionHandler {
         return new ResponseEntity<>( ErrorResponse.builder().status(HttpStatus.INTERNAL_SERVER_ERROR.value()).error(exp.getMessage()).build(),
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 
 
 }

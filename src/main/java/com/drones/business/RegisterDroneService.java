@@ -5,6 +5,7 @@ import com.drones.enums.Model;
 import com.drones.enums.State;
 
 import com.drones.exception.InvalidInputException;
+import com.drones.exception.InvalidOperationException;
 import com.drones.model.Drone;
 import com.drones.service.DroneService;
 
@@ -19,7 +20,10 @@ import java.text.MessageFormat;
 public class RegisterDroneService extends BusinessService<Drone, Drone> {
     @Autowired
     DroneService droneService;
-    void validateRequest(Drone request){
+
+    private int count = 5;
+
+    void validateRequest(Drone request) {
         // check if drone exist
         Drone drone = droneService.get(request.getSerialNumber());
         if (drone != null) {
@@ -27,11 +31,15 @@ public class RegisterDroneService extends BusinessService<Drone, Drone> {
             if (State.IDLE.compareTo(drone.getState()) != 0) {
                 throw new InvalidInputException(MessageFormat.format(AppConstant.INVALID_STATE_MSG, drone.getState(), AppConstant.UPDATE_DRONE_ACTION));
             }
+        } else {
+            if (count >= AppConstant.MAX_NUM_DRONE) {
+                throw new InvalidOperationException(MessageFormat.format(AppConstant.INVALID_OPERATION_MSG, AppConstant.ADD_DRONE_ACTION));
+            }
         }
 
         // validate drone model
-        Model model =  Model.getEnumByValue(request.getModel().name());
-        if(model == null ){
+        Model model = Model.getEnumByValue(request.getModel().name());
+        if (model == null) {
             throw new InvalidInputException(AppConstant.INVALID_DRONE_MODEL_MSG);
 
         }
@@ -44,6 +52,7 @@ public class RegisterDroneService extends BusinessService<Drone, Drone> {
     Drone serviceLogic(Drone request) {
         request.setState(State.IDLE);
         request = droneService.save(request);
+        count++;
         return request;
     }
 }

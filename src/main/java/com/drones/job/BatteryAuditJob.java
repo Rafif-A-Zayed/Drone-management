@@ -21,7 +21,6 @@ public class BatteryAuditJob {
     DroneService droneService;
 
     // assumption battery threshold to consider it has problem 30%
-    // assumption data return will not be huge data so
     // assumption run daily at 12:00 AM
     @Scheduled(cron = "0 0 * * * *")
     public void run() {

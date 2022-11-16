@@ -1,7 +1,20 @@
 # Musala - Drone
 
  is a Java project to manage drones for as medication transportation.
- 
+
+- All APIs are "self-documented" by Swagger2 using annotations
+- a RESTful service using annotation: supports JSON request / response
+
+# Assumptions
+- Support fleet of 10 drone
+- For daily job 
+  - battery threshold to consider it has problem is 30% 
+  - run daily at 12:00 AM
+  - publish event with drones data, and it should be handled by another service (Ex. notification service) to send alert via (Ex. email)
+- Audit table added for Drone ( capacity , state ) changes c, it can be used for history changes and reports 
+# Requirement 
+- Gradle
+- Java
 # Usage
 ## REST API
 
