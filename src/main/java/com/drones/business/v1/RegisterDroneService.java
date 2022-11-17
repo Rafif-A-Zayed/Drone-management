@@ -2,6 +2,7 @@ package com.drones.business.v1;
 
 
 import com.drones.business.BusinessServiceImpl;
+import com.drones.business.v1.request.AddUpdateDroneRequest;
 import com.drones.enums.Model;
 import com.drones.enums.State;
 
@@ -18,13 +19,14 @@ import java.text.MessageFormat;
 
 
 @Component
-public class RegisterDroneService extends BusinessServiceImpl<Drone, Drone> {
+public class RegisterDroneService extends BusinessServiceImpl<AddUpdateDroneRequest, Drone> {
     @Autowired
     DroneService droneService;
 
     private int count = 5;
 
-    void validateRequest(Drone request) {
+    @Override
+    protected void validateRequest(AddUpdateDroneRequest request) {
         // check if drone exist
         Drone drone = droneService.get(request.getSerialNumber());
         if (drone != null) {
@@ -50,10 +52,14 @@ public class RegisterDroneService extends BusinessServiceImpl<Drone, Drone> {
 
 
     @Override
-    public Drone serviceLogic(Drone request) {
-        request.setState(State.IDLE);
-        request = droneService.save(request);
+    public Drone serviceLogic(AddUpdateDroneRequest request) {
+
+       Drone drone= droneService.save(Drone.builder().capacity(request.getCapacity())
+                .state(State.IDLE)
+                .serialNumber(request.getSerialNumber())
+                 .wight(request.getWight())
+                .model(request.getModel()).build());
         count++;
-        return request;
+        return drone;
     }
 }

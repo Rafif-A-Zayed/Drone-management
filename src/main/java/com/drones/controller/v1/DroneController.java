@@ -1,5 +1,6 @@
 package com.drones.controller.v1;
 
+import com.drones.business.v1.request.AddUpdateDroneRequest;
 import com.drones.business.v1.request.LoadMedicationRequest;
 import com.drones.business.v1.request.Request;
 import com.drones.business.v1.*;
@@ -33,7 +34,7 @@ public class DroneController {
     GetDroneService getDroneService;
 
     @PostMapping()
-    public @ResponseBody Drone register(@RequestBody @Valid Drone drone) {
+    public @ResponseBody Drone register(@RequestBody @Valid AddUpdateDroneRequest drone) {
         return registerDrone.execute(drone);
     }
     @PutMapping(value = "/{serialNumber}")

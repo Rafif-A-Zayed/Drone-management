@@ -18,7 +18,7 @@ public abstract class BusinessServiceImpl <Req,Res > implements BusinessService 
 
     }
 
-    void validateRequest(Req request){
+    protected void validateRequest(Req request){
      }
 
 

@@ -15,7 +15,8 @@ import java.text.MessageFormat;
 public class GetBatteryLevelService extends BusinessServiceImpl<Request, Double> {
     @Autowired
     DroneService droneService;
-    void validateRequest(Request request){
+    @Override
+    protected void validateRequest(Request request){
         Drone drone = droneService.get(request.getSerialNumber());
         if(drone == null){
             throw new NotFoundException(MessageFormat.format(AppConstant.NOT_FOUND_MSG,request.getSerialNumber()) );

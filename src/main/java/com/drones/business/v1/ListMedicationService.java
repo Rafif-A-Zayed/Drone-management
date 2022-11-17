@@ -20,7 +20,8 @@ import java.util.Set;
 public class ListMedicationService extends BusinessServiceImpl<Request,Set<Medication>> {
     @Autowired
     DroneService droneService;
-    void validateRequest(Request request){
+    @Override
+    protected void validateRequest(Request request){
         Drone drone = droneService.getWithMedication(request.getSerialNumber());
         if(drone == null){
             throw new NotFoundException(MessageFormat.format(AppConstant.NOT_FOUND_MSG,request.getSerialNumber()) );

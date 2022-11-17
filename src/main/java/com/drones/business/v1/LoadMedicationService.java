@@ -22,7 +22,8 @@ public class LoadMedicationService extends BusinessServiceImpl<LoadMedicationReq
     @Autowired
     DroneService droneService;
 
-    void validateRequest(LoadMedicationRequest request) {
+    @Override
+    protected void validateRequest(LoadMedicationRequest request) {
 
         // validate that medication list not empty
         if (request.getMedicationList() == null || request.getMedicationList().isEmpty()) {
