@@ -42,9 +42,9 @@ The REST API to the example app is described below.
 
 #### Request
 
-`GET /musala/drone/available`
+`GET /musala/v1/drone/available`
 
-    curl -i -H 'Accept: application/json' http://localhost:8080/musala/drone/available
+    curl -i -H 'Accept: application/json' http://localhost:8080/musala/v1/drone/available
 
 #### Response
 
@@ -71,9 +71,9 @@ The REST API to the example app is described below.
 
 #### Request
 
-`GET /musala/drone/{serial-number}`
+`GET /musala/v1/drone/{serial-number}`
 
-    curl -i -H 'Accept: application/json' http://localhost:8080/musala/drone/{serial-number}
+    curl -i -H 'Accept: application/json' http://localhost:8080/musala/v1/drone/{serial-number}
 
 #### Response
 
@@ -97,9 +97,9 @@ The REST API to the example app is described below.
 
 #### Request
 
-`GET /musala/drone/{serial-number}/medication`
+`GET /musala/v1/drone/{serial-number}/medication`
 
-    curl -i -H 'Accept: application/json' http://localhost:8080/musala/drone/{serial-number}/medication
+    curl -i -H 'Accept: application/json' http://localhost:8080/musala/v1/drone/{serial-number}/medication
 
 #### Response
 
@@ -121,9 +121,9 @@ The REST API to the example app is described below.
 ### Get a specific Drone capacity
 #### Request
 
-`GET /musala/drone/{serial-number}/battery`
+`GET /musala/v1/drone/{serial-number}/battery`
 
-    curl -i -H 'Accept: application/json' http://localhost:8080/musala/drone/{serial-number}/battery
+    curl -i -H 'Accept: application/json' http://localhost:8080/musala/v1/drone/{serial-number}/battery
 
 #### Response
 
@@ -140,9 +140,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`POST /musala/drone/`
+`POST /musala/v1/drone/`
 
-    curl -i -H 'Accept: application/json' -d 'serialNumber=serial-10&wight=350&capacity=50' http://localhost:8080/musala/drone
+    curl -i -H 'Accept: application/json' -d 'serialNumber=serial-10&wight=350&capacity=50' http://localhost:8080/musala/v1/drone
 
 ### Response
 
@@ -165,9 +165,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`PUT /musala/drone/{serialNumber}`
+`PUT /musala/v1/drone/{serialNumber}`
 
-    curl -i -H 'Accept: application/json' -d '[]' http://localhost:8080/musala/drone/{serialNumber}
+    curl -i -H 'Accept: application/json' -d '[]' http://localhost:8080/musala/v1/drone/{serialNumber}
 
 ### Response
 

@@ -1,8 +1,8 @@
 package com.drones.controller.v1;
 
-import com.drones.business.*;
-import com.drones.business.request.LoadMedicationRequest;
-import com.drones.business.request.Request;
+import com.drones.business.v1.request.LoadMedicationRequest;
+import com.drones.business.v1.request.Request;
+import com.drones.business.v1.*;
 import com.drones.model.Drone;
 import com.drones.model.Medication;
 import org.springframework.beans.factory.annotation.Autowired;

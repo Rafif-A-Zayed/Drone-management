@@ -1,6 +1,7 @@
-package com.drones.business;
+package com.drones.business.v1;
 
-import com.drones.business.request.LoadMedicationRequest;
+import com.drones.business.BusinessServiceImpl;
+import com.drones.business.v1.request.LoadMedicationRequest;
 import com.drones.enums.State;
 import com.drones.exception.InvalidInputException;
 import com.drones.exception.MissingMandatoryException;
