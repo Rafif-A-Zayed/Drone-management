@@ -5,8 +5,9 @@ plugins {
 }
 version = '1.0.0'
 group = 'com.drones'
+
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_9
 }
 repositories {
     mavenCentral()

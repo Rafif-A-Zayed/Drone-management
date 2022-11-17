@@ -7,6 +7,12 @@
 
 # Assumptions
 - Support fleet of 10 drone
+- 5 Drones will be loaded in app startup 
+  - one with medication 
+  - serial number as "serial-i" i = 1 to 5
+  - medication code MED_CODE_i_j , i drone number , j index
+  - medication code MED_NAME-i-j , i drone number , j index
+- Update API work only for Drone in IDLE state
 - For daily job 
   - battery threshold to consider it has problem is 30% 
   - run daily at 12:00 AM
@@ -15,14 +21,18 @@
 
 Run 
 - Clone this repository
-- Make sure you have JDK, gradle 
-- 
-- DB consol http://localhost:8080/h2-console 
-- Swagger http://localhost:8080/swagger-ui/index.html
+- Make sure you have JDK 8+ , gradle
+- to run
+  - build the app gradle clean build
+  - go to build dir 
+  - run java -jar  Musala-1.0.0.jar in build path
+- DB consol http://localhost:8080/musala/h2-console 
+- Swagger http://localhost:8080/musala/swagger-ui/index.html
+- Health check: http://localhost:8080/musala/actuator/health
 
 # Requirement 
 - Gradle
-- Java
+- Java 8+ 
 # Usage
 ## REST API
 
@@ -32,9 +42,9 @@ The REST API to the example app is described below.
 
 #### Request
 
-`GET /drone/available`
+`GET /musala/drone/available`
 
-    curl -i -H 'Accept: application/json' http://localhost:8080/drone/available
+    curl -i -H 'Accept: application/json' http://localhost:8080/musala/drone/available
 
 #### Response
 
@@ -61,9 +71,9 @@ The REST API to the example app is described below.
 
 #### Request
 
-`GET /drone/{serial-number}`
+`GET /musala/drone/{serial-number}`
 
-    curl -i -H 'Accept: application/json' http://localhost:8080/drone/{serial-number}
+    curl -i -H 'Accept: application/json' http://localhost:8080/musala/drone/{serial-number}
 
 #### Response
 
@@ -87,9 +97,9 @@ The REST API to the example app is described below.
 
 #### Request
 
-`GET /drone/{serial-number}/medication`
+`GET /musala/drone/{serial-number}/medication`
 
-    curl -i -H 'Accept: application/json' http://localhost:8080/drone/{serial-number}/medication
+    curl -i -H 'Accept: application/json' http://localhost:8080/musala/drone/{serial-number}/medication
 
 #### Response
 
@@ -111,9 +121,9 @@ The REST API to the example app is described below.
 ### Get a specific Drone capacity
 #### Request
 
-`GET /drone/{serial-number}/battery`
+`GET /musala/drone/{serial-number}/battery`
 
-    curl -i -H 'Accept: application/json' http://localhost:8080/drone/{serial-number}/battery
+    curl -i -H 'Accept: application/json' http://localhost:8080/musala/drone/{serial-number}/battery
 
 #### Response
 
@@ -130,9 +140,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`POST /drone/`
+`POST /musala/drone/`
 
-    curl -i -H 'Accept: application/json' -d 'serialNumber=serial-10&wight=350&capacity=50' http://localhost:8080/drone
+    curl -i -H 'Accept: application/json' -d 'serialNumber=serial-10&wight=350&capacity=50' http://localhost:8080/musala/drone
 
 ### Response
 
@@ -155,9 +165,9 @@ The REST API to the example app is described below.
 
 ### Request
 
-`PUT /drone/{serialNumber}`
+`PUT /musala/drone/{serialNumber}`
 
-    curl -i -H 'Accept: application/json' -d '[]' http://localhost:8080/drone/{serialNumber}
+    curl -i -H 'Accept: application/json' -d '[]' http://localhost:8080/musala/drone/{serialNumber}
 
 ### Response
 

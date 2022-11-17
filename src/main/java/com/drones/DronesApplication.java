@@ -35,7 +35,7 @@ public class DronesApplication {
     }
     @Bean
     public ServletRegistrationBean h2servletRegistration() {
-        ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
+        ServletRegistrationBean registration = new ServletRegistrationBean<>(new WebServlet());
         registration.addUrlMappings("/h2-console/*");
         return registration;
     }
