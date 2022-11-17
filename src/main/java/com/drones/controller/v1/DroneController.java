@@ -1,4 +1,4 @@
-package com.drones.controller;
+package com.drones.controller.v1;
 
 import com.drones.business.*;
 import com.drones.business.request.LoadMedicationRequest;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping(path = "/drone")
+@RequestMapping(path = "/v1/drone")
 public class DroneController {
 
 
