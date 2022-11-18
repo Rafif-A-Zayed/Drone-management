@@ -31,7 +31,7 @@ Run
 - Health check: http://localhost:8080/musala/actuator/health
 
 # Requirement 
-- Gradle
+- Gradle 7.5.1
 - Java 8+ 
 # Usage
 ## REST API
