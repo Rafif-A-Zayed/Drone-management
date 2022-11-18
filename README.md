@@ -1,6 +1,6 @@
 # Musala - Drone
 
- is a Java project to manage drones for as medication transportation.
+ is a Java project to manage drones as medication transportation.
 
 - All APIs are "self-documented" by Swagger2 using annotations
 - a RESTful service using annotation: supports JSON request / response
