@@ -9,7 +9,7 @@ import com.drones.model.Medication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
@@ -34,7 +34,7 @@ public class DroneController {
     GetDroneService getDroneService;
 
     @PostMapping()
-    public @ResponseBody Drone register(@RequestBody @Valid AddUpdateDroneRequest drone) {
+    public  Drone register(@RequestBody @Valid AddUpdateDroneRequest drone) {
         return registerDrone.execute(drone);
     }
     @PutMapping(value = "/{serialNumber}")
@@ -48,18 +48,18 @@ public class DroneController {
         return getDroneService.execute(serialNumber);
     }
     @GetMapping(value = "/{serialNumber}/medication")
-    public @ResponseBody Set<Medication> getMedication(@PathVariable String serialNumber) {
+    public Set<Medication> getMedication(@PathVariable String serialNumber) {
         return listMedicationService.execute(Request.builder().serialNumber(serialNumber).build());
 
     }
 
     @GetMapping(value = "/{serialNumber}/battery")
-    public @ResponseBody Double getBatteryLevel(@PathVariable String serialNumber) {
+    public  Double getBatteryLevel(@PathVariable String serialNumber) {
         return getBatteryLevelService.execute(Request.builder().serialNumber(serialNumber).build());
     }
 
     @GetMapping(value = "/available")
-    public @ResponseBody List<Drone> getAvailableDrone() {
+    public  List<Drone> getAvailableDrone() {
         return getAvailableDronesService.execute(null);
     }
 }

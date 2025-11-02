@@ -5,8 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class BusinessServiceImpl <Req,Res > implements BusinessService <Req,Res > {
 
-
-
     public Res execute(Req request){
         try{
             validateRequest(request);

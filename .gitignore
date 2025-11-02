@@ -2,3 +2,18 @@
 /.idea
 /.gradle
 /.gradle/
+
+# Ignore build output
+/build/
+/out/
+/target/
+
+# Ignore compiled Java classes
+*.class
+# Ignore IntelliJ and Eclipse project files
+*.iml
+*.ipr
+*.iws
+/.project
+/.classpath
+/.settings/

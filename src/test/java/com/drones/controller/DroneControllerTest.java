@@ -59,8 +59,8 @@ public class DroneControllerTest {
     @Test
     void testLoadMedication() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders.put("/v1/drone/ser1").contentType(MediaType.APPLICATION_JSON_VALUE).content("[{\n" +
-                "\t\"code\":\"med-A-1\",\n" +
-                "\t\"name\": \"_$sdddff\",\n" +
+                "\t\"code\":\"MED_A_1\",\n" +
+                "\t\"name\": \"rafif\",\n" +
                 "\t\"wight\": 50.0,\n" +
                 "\t\"image\":\"Lightweight\"\n" +
                 "}]");

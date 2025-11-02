@@ -6,8 +6,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.validation.constraints.*;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.*;
 @Getter
 @Setter
 @SuperBuilder()
