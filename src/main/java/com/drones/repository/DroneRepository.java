@@ -16,5 +16,5 @@ public interface DroneRepository extends CrudRepository<Drone,String> {
     List<Drone> findByCapacityLessThan(Double capacity);
     @EntityGraph(attributePaths = "medications")
     @Query("SELECT d FROM Drone d")
-    List<Drone> findAllWithMedications();
+   Drone findAllWithMedications(String serialNumber);
 }

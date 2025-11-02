@@ -36,7 +36,7 @@ public class DroneServiceImpl implements DroneService {
 
     @Override
     public Drone getWithMedication(String serialNumber) {
-        return droneRepository.findById(serialNumber).orElse(null);
+        return droneRepository.findAllWithMedications(serialNumber);
     }
 
     @Override
