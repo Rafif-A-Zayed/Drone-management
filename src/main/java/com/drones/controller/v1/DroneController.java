@@ -7,6 +7,7 @@ import com.drones.business.v1.*;
 import com.drones.model.Drone;
 import com.drones.model.Medication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
@@ -33,10 +34,12 @@ public class DroneController {
     @Autowired
     GetDroneService getDroneService;
 
+    @Secured("ROLE_ADMIN")
     @PostMapping()
     public  Drone register(@RequestBody @Valid AddUpdateDroneRequest drone) {
         return registerDrone.execute(drone);
     }
+    @Secured({"ROLE_ADMIN", "ROLE_DISPATCHER"})
     @PutMapping(value = "/{serialNumber}")
     public Void loadMedication(@PathVariable String serialNumber,
                                @RequestBody Set<@Valid Medication> medicationList) {

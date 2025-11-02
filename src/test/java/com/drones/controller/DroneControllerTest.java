@@ -21,6 +21,8 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 
+import java.util.List;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -51,7 +53,7 @@ public class DroneControllerTest {
 
     @Test
     void testRegisterDrone() throws Exception {
-        String token = JwtTokenUtil.generateToken("test");
+        String token = JwtTokenUtil.generateToken("test", List.of("ADMIN"));
         RequestBuilder request = MockMvcRequestBuilders.post("/v1/drone")
                 .header("Authorization", "Bearer " + token)
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content("{\n" +
@@ -66,7 +68,7 @@ public class DroneControllerTest {
 
     @Test
     void testLoadMedication() throws Exception {
-        String token = JwtTokenUtil.generateToken("test");
+        String token = JwtTokenUtil.generateToken("test", List.of("DISPATCHER"));
         RequestBuilder request = MockMvcRequestBuilders.put("/v1/drone/ser1")
                 .header("Authorization", "Bearer " + token)
                 .contentType(MediaType.APPLICATION_JSON_VALUE).content("[{\n" +
@@ -83,7 +85,7 @@ public class DroneControllerTest {
 
     @Test
     void testGetDrone() throws Exception {
-        String token = JwtTokenUtil.generateToken("test");
+        String token = JwtTokenUtil.generateToken("test", null);
         RequestBuilder request = MockMvcRequestBuilders.get("/v1/drone/ser1")
                 .header("Authorization", "Bearer " + token);
           mvc.perform(request).andExpect(status().isOk());
@@ -93,7 +95,7 @@ public class DroneControllerTest {
 
     @Test
     void testGetMedication() throws Exception {
-        String token = JwtTokenUtil.generateToken("test");
+        String token = JwtTokenUtil.generateToken("test", null);
         RequestBuilder request = MockMvcRequestBuilders.get("/v1/drone/ser1/medication")
                 .header("Authorization", "Bearer " + token);
         mvc.perform(request).andExpect(status().isOk());
@@ -102,7 +104,7 @@ public class DroneControllerTest {
 
     @Test
     void testGetBatteryLevel() throws Exception {
-        String token = JwtTokenUtil.generateToken("test");
+        String token = JwtTokenUtil.generateToken("test", null);
         RequestBuilder request = MockMvcRequestBuilders.get("/v1/drone/ser1/battery")
                 .header("Authorization", "Bearer " + token);
         mvc.perform(request).andExpect(status().isOk());
@@ -111,7 +113,7 @@ public class DroneControllerTest {
 
     @Test
     void testGetAvailableDrone() throws Exception {
-        String token = JwtTokenUtil.generateToken("test");
+        String token = JwtTokenUtil.generateToken("test", null);
         RequestBuilder request = MockMvcRequestBuilders.get("/v1/drone/available")
                 .header("Authorization", "Bearer " + token);
         mvc.perform(request).andExpect(status().isOk());
