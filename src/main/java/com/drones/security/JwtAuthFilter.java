@@ -31,6 +31,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
+        String path = request.getRequestURI();
+
+        // ✅ Skip H2 console and health endpoints
+        if (path.startsWith("/musala/h2-console") || path.startsWith("/h2-console") || path.startsWith("/health")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String authHeader = request.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {

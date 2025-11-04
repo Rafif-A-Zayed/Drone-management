@@ -1,8 +1,8 @@
 package com.drones;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.zalando.logbook.Logbook;
@@ -26,10 +26,6 @@ public class DronesApplication {
                 .build();
 
     }
-    @Bean
-    public ServletRegistrationBean h2servletRegistration() {
-        ServletRegistrationBean registration = new ServletRegistrationBean<>();
-        registration.addUrlMappings("/h2-console/*");
-        return registration;
-    }
+
+
 }
